@@ -1,5 +1,10 @@
+# fly.toml app configuration file generated for mediaflow-proxy-ybseug on 2026-11-05T18:56:42Z
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
+
 app = "mediaflow-proxy-ybseug"
-primary_region = "ams"
+primary_region = 'ams'
 
 [http_service]
   internal_port = 8888
@@ -10,3 +15,16 @@ primary_region = "ams"
 
 [env]
   PORT = "8888"
+
+[[restart]]
+  policy = 'on-failure'
+  processes = ['app']
+  retries = 0
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory = '768mb'
+  memory_mb = 768
+  processes = ['app']
+  size = 'shared-cpu-1x'
